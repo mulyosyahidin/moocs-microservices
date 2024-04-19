@@ -6,7 +6,8 @@ Proyek ini merupakan tugas akhir yang menerapkan arsitektur microservices pada p
 
 ## Services
 1. **Authentication Service** - Service yang bertanggung jawab untuk melakukan otentikasi pengguna.
-2. On Progress...
+2. **Email Service** - Stateless service untuk mengirim email.
+3. On Progress...
 
 ## API Gateway
 API Gateway merupakan service yang bertanggung jawab untuk menerima request dari client dan memproksikan request tersebut ke service yang sesuai. API Gateway juga bertanggung jawab untuk melakukan autentikasi dan autorisasi pengguna.

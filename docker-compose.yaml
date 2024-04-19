@@ -1,1 +1,56 @@
 version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:4.4
+    container_name: db_mongodb
+    ports:
+      - '27017:27017'
+    restart: on-failure
+    volumes:
+      - ./docker/mongodb/data:/data/db
+
+  krakend:
+    container_name: app_api_gateway
+    image: devopsfaith/krakend
+    ports:
+      - 2007:8080
+    volumes:
+      - ./apps/krakend:/etc/krakend
+    command: ["run", "-d", "-c", "/etc/krakend/krakend.json"]
+    depends_on:
+      - authentication-service
+
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: app_rabbitmq
+    restart: on-failure
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+
+  authentication-service:
+    container_name: service_authentication
+    restart: on-failure
+    build:
+      context: ./services/authentication-service
+    ports:
+      - 4000:3000
+    depends_on:
+      - rabbitmq
+      - mongodb
+
+  email-service:
+    image: node:20.12.2
+    container_name: service_email
+    ports:
+      - 4001:3001
+    volumes:
+      - ./services/email-service:/app/email-service
+    working_dir: /app/email-service
+    command: npm run dev
+    depends_on:
+      - rabbitmq

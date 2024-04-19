@@ -1,0 +1,88 @@
+{
+    "version": 3,
+    "name": "KrakenD - API Gateway",
+    "timeout": "3000ms",
+    "cache_ttl": "300s",
+    "port": 8080,
+    "output_encoding": "no-op",
+    "endpoints": [
+        {
+            "endpoint": "/auth/login",
+            "method": "POST",
+            "backend": [
+                {
+                    "url_pattern": "/auth/login",
+                    "host": [
+                        "http://172.21.224.1:4000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/auth/register",
+            "method": "POST",
+            "backend": [
+                {
+                    "url_pattern": "/auth/register",
+                    "host": [
+                        "http://172.21.224.1:4000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/auth/me",
+            "method": "GET",
+            "input_headers": [
+                "Authorization"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/auth/me",
+                    "host": [
+                        "http://172.21.224.1:4000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/auth/logout",
+            "method": "POST",
+            "input_headers": [
+                "Authorization"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/auth/logout",
+                    "host": [
+                        "http://172.21.224.1:4000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/auth/forgot-password/request",
+            "method": "POST",
+            "backend": [
+                {
+                    "url_pattern": "/auth/forgot-password/request",
+                    "host": [
+                        "http://172.21.224.1:4000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/auth/forgot-password/verify",
+            "method": "POST",
+            "backend": [
+                {
+                    "url_pattern": "/auth/forgot-password/verify",
+                    "host": [
+                        "http://172.21.224.1:4000"
+                    ]
+                }
+            ]
+        }
+    ]
+}
