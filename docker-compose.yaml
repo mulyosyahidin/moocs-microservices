@@ -32,6 +32,18 @@ services:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
 
+  mysql:
+    image: mysql:8.0
+    container_name: db_mysql
+    restart: on-failure
+    ports:
+      - '3307:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+
   authentication-service:
     container_name: service_authentication
     restart: on-failure
@@ -42,15 +54,26 @@ services:
     depends_on:
       - rabbitmq
       - mongodb
+      - mysql
 
   email-service:
-    image: node:20.12.2
+    image: node:20.12.2-alpine
     container_name: service_email
     ports:
       - 4001:3001
     volumes:
       - ./services/email-service:/app/email-service
     working_dir: /app/email-service
-    command: npm run dev
+    command: npm run start
     depends_on:
       - rabbitmq
+
+  course-service:
+    container_name: service_course
+    restart: on-failure
+    build:
+      context: ./services/course-service
+    ports:
+      - 4002:3002
+    depends_on:
+      - mysql

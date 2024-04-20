@@ -9,3 +9,4 @@ yarn-error.log
 /*.log
 /storage/keys/*
 /storage/logs/*
+/public/uploads/*

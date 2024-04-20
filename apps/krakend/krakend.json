@@ -46,6 +46,21 @@
             ]
         },
         {
+            "endpoint": "/auth/refresh-token",
+            "method": "POST",
+            "input_headers": [
+                "x-refresh-token"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/auth/refresh-token",
+                    "host": [
+                        "http://172.21.224.1:4000"
+                    ]
+                }
+            ]
+        },
+        {
             "endpoint": "/auth/logout",
             "method": "POST",
             "input_headers": [
@@ -80,6 +95,83 @@
                     "url_pattern": "/auth/forgot-password/verify",
                     "host": [
                         "http://172.21.224.1:4000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/categories",
+            "method": "GET",
+            "input_headers": [
+                "Authorization"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/categories",
+                    "host": [
+                        "http://172.21.224.1:4002"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/categories",
+            "method": "POST",
+            "input_headers": [
+                "Authorization",
+                "Content-Type"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/categories",
+                    "host": [
+                        "http://172.21.224.1:4002"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/categories/{id}",
+            "method": "GET",
+            "input_headers": [
+                "Authorization"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/categories/{id}",
+                    "host": [
+                        "http://172.21.224.1:4002"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/categories/{id}",
+            "method": "PUT",
+            "input_headers": [
+                "Authorization",
+                "Content-Type"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/categories/{id}",
+                    "host": [
+                        "http://172.21.224.1:4002"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/categories/{id}",
+            "method": "DELETE",
+            "input_headers": [
+                "Authorization"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/categories/{id}",
+                    "host": [
+                        "http://172.21.224.1:4002"
                     ]
                 }
             ]
