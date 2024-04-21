@@ -1,11 +1,11 @@
-import {validate} from "../validations/validation.js";
-import {storeCategoryValidation} from "../validations/category-validation.js";
+import { validate } from "../validations/validation.js";
+import { storeCategoryValidation } from "../validations/category-validation.js";
 import ErrorResponse from "../utils/error-response.js";
 import slugify from "slugify";
 import * as fs from "fs";
 import Category from "../models/Category.js";
-import {Op, or} from "sequelize";
-import {DeleteObjectCommand, PutObjectCommand} from "@aws-sdk/client-s3";
+import { Op, or } from "sequelize";
+import { DeleteObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
 import s3Client from "../configs/aws.js";
 import logger from "../configs/logging.js";
 
@@ -57,7 +57,7 @@ const store = async (req) => {
         const params = {
             Bucket: process.env.S3_BUCKET,
             Key: file.filename,
-            Body:  fs.readFileSync(`${process.cwd()}/public/uploads/${file.filename}`),
+            Body: fs.readFileSync(`${process.cwd()}/public/uploads/${file.filename}`),
             ACL: "public-read",
         };
 
@@ -122,7 +122,7 @@ const update = async (req) => {
         const params = {
             Bucket: process.env.S3_BUCKET,
             Key: file.filename,
-            Body:  fs.readFileSync(`${process.cwd()}/public/uploads/${file.filename}`),
+            Body: fs.readFileSync(`${process.cwd()}/public/uploads/${file.filename}`),
             ACL: "public-read",
         };
 

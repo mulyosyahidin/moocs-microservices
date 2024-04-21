@@ -11,6 +11,7 @@ const register = async (request) => {
         name: Joi.string().required(),
         email: Joi.string().email().required(),
         password: Joi.string().min(8).required(),
+        role: Joi.string().valid('admin', 'user', 'instructor').default('user'),
     });
 
     const user = validate(registerValidation, request);
@@ -28,6 +29,7 @@ const register = async (request) => {
         'name': user.name,
         'password': hashedPassword,
         'rememberToken': Math.random().toString(36).substring(6),
+        'role': user.role,
     };
 
     const createdUser = await User.create(newUser);

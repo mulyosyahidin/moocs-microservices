@@ -12,14 +12,13 @@ services:
 
   krakend:
     container_name: app_api_gateway
-    image: devopsfaith/krakend
+    restart: always
+    build:
+      context: ./docker/krakend
     ports:
       - 2007:8080
     volumes:
       - ./apps/krakend:/etc/krakend
-    command: ["run", "-d", "-c", "/etc/krakend/krakend.json"]
-    depends_on:
-      - authentication-service
 
   rabbitmq:
     image: rabbitmq:3.13-management
@@ -49,6 +48,8 @@ services:
     restart: on-failure
     build:
       context: ./services/authentication-service
+    volumes:
+      - ./services/authentication-service/src:/app/src
     ports:
       - 4000:3000
     depends_on:
@@ -57,14 +58,14 @@ services:
       - mysql
 
   email-service:
-    image: node:20.12.2-alpine
     container_name: service_email
+    restart: on-failure
+    build:
+      context: ./services/email-service
+    volumes:
+      - ./services/email-service/src:/app/src
     ports:
       - 4001:3001
-    volumes:
-      - ./services/email-service:/app/email-service
-    working_dir: /app/email-service
-    command: npm run start
     depends_on:
       - rabbitmq
 
@@ -73,7 +74,22 @@ services:
     restart: on-failure
     build:
       context: ./services/course-service
+    volumes:
+      - ./services/course-service/src:/app/src
     ports:
       - 4002:3002
     depends_on:
       - mysql
+
+  instructor-service:
+    container_name: service_instructor
+    restart: on-failure
+    build:
+      context: ./services/instructor-service
+    volumes:
+      - ./services/instructor-service/src:/app/src
+    ports:
+      - 4003:3003
+    depends_on:
+      - mongodb
+      - authentication-service

@@ -4,7 +4,6 @@ WORKDIR /app
 
 COPY package*.json ./
 COPY .env ./
-COPY storage/email-templates ./storage/email-templates
 
 FROM base AS main
 

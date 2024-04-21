@@ -1,0 +1,12 @@
+/node_modules
+.env
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
+/.nyc_output
+/*.log
+/storage/keys/*
+/storage/logs/*
+/public/uploads/*

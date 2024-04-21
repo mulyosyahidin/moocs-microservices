@@ -4,7 +4,7 @@
   "description": "Email Service - Part of MOOCS Microservices",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --env-file=.env src/index.js",
+    "dev": "nodemon -L --env-file=.env src/index.js",
     "start": "node --env-file=.env src/index.js"
   },
   "type": "module",

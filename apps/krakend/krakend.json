@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "name": "KrakenD - API Gateway",
+    "name": "KrakenD - Vocasia API Gateway",
     "timeout": "3000ms",
     "cache_ttl": "300s",
     "port": 8080,
@@ -172,6 +172,124 @@
                     "url_pattern": "/categories/{id}",
                     "host": [
                         "http://172.21.224.1:4002"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/instructors/register",
+            "method": "POST",
+            "backend": [
+                {
+                    "url_pattern": "/register",
+                    "host": [
+                        "http://172.21.224.1:4003"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/instructors",
+            "method": "GET",
+            "input_headers": [
+                "Authorization"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/instructors",
+                    "host": [
+                        "http://172.21.224.1:4003"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/instructors/{id}",
+            "method": "GET",
+            "input_headers": [
+                "Authorization"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/instructors/{id}",
+                    "host": [
+                        "http://172.21.224.1:4003"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/instructors/{id}",
+            "method": "PUT",
+            "input_headers": [
+                "Authorization",
+                "Content-Type"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/instructors/{id}",
+                    "host": [
+                        "http://172.21.224.1:4003"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/instructors/{id}/approve",
+            "method": "PUT",
+            "input_headers": [
+                "Authorization"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/instructors/{id}/approve",
+                    "host": [
+                        "http://172.21.224.1:4003"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/instructors/{id}/reject",
+            "method": "PUT",
+            "input_headers": [
+                "Authorization"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/instructors/{id}/reject",
+                    "host": [
+                        "http://172.21.224.1:4003"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/instructors/{id}/ban",
+            "method": "PUT",
+            "input_headers": [
+                "Authorization"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/instructors/{id}/ban",
+                    "host": [
+                        "http://172.21.224.1:4003"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/instructors/{id}",
+            "method": "DELETE",
+            "input_headers": [
+                "Authorization"
+            ],
+            "backend": [
+                {
+                    "url_pattern": "/instructors/{id}",
+                    "host": [
+                        "http://172.21.224.1:4003"
                     ]
                 }
             ]

@@ -24,10 +24,10 @@
                   "type": "object",
                   "properties": {
                     "success": {
-                        "type": "boolean"
+                      "type": "boolean"
                     },
                     "message": {
-                        "type": "string"
+                      "type": "string"
                     },
                     "data": {
                       "type": "array",
@@ -55,7 +55,9 @@
                     "type": "string"
                   }
                 },
-                "required": ["name"]
+                "required": [
+                  "name"
+                ]
               }
             }
           }
@@ -69,10 +71,10 @@
                   "type": "object",
                   "properties": {
                     "success": {
-                        "type": "boolean"
+                      "type": "boolean"
                     },
                     "message": {
-                        "type": "string"
+                      "type": "string"
                     }
                   }
                 }
@@ -105,10 +107,10 @@
                   "type": "object",
                   "properties": {
                     "success": {
-                        "type": "boolean"
+                      "type": "boolean"
                     },
                     "message": {
-                        "type": "string"
+                      "type": "string"
                     },
                     "data": {
                       "$ref": "#/components/schemas/Category"
@@ -126,10 +128,10 @@
                   "type": "object",
                   "properties": {
                     "success": {
-                        "type": "boolean"
+                      "type": "boolean"
                     },
                     "message": {
-                        "type": "string"
+                      "type": "string"
                     }
                   }
                 }
@@ -174,10 +176,10 @@
                   "type": "object",
                   "properties": {
                     "success": {
-                        "type": "boolean"
+                      "type": "boolean"
                     },
                     "message": {
-                        "type": "string"
+                      "type": "string"
                     }
                   }
                 }
@@ -192,10 +194,10 @@
                   "type": "object",
                   "properties": {
                     "success": {
-                        "type": "boolean"
+                      "type": "boolean"
                     },
                     "message": {
-                        "type": "string"
+                      "type": "string"
                     }
                   }
                 }
@@ -226,10 +228,10 @@
                   "type": "object",
                   "properties": {
                     "success": {
-                        "type": "boolean"
+                      "type": "boolean"
                     },
                     "message": {
-                        "type": "string"
+                      "type": "string"
                     }
                   }
                 }
@@ -244,10 +246,10 @@
                   "type": "object",
                   "properties": {
                     "success": {
-                        "type": "boolean"
+                      "type": "boolean"
                     },
                     "message": {
-                        "type": "string"
+                      "type": "string"
                     }
                   }
                 }

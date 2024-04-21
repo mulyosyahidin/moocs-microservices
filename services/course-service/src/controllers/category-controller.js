@@ -1,6 +1,6 @@
 import categoryService from "../services/category-service.js";
 
-const index = async (req, res,next) => {
+const index = async (req, res, next) => {
     try {
         const categories = await categoryService.findAll();
 
@@ -15,11 +15,9 @@ const index = async (req, res,next) => {
     }
 }
 
-const store = async (req, res,next) => {
+const store = async (req, res, next) => {
     try {
         await categoryService.store(req);
-
-        console.log(req.body, req.file);
 
         res.status(201).json({
             success: true,
